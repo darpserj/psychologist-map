@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Providers } from "@/components/Providers";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { Box } from "@chakra-ui/react";
+
+// https://www.realtimecolors.com/?colors=050f0a-f3fcf8-31d885-7af0b5-45f79e&fonts=Inter-Inter
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +22,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>
+          <Navbar></Navbar>
+          <Box bg={"background.main"} color={"text.main"}>
+            {children}
+          </Box>
+          <Footer />
+        </Providers>
+      </body>
     </html>
   );
 }
